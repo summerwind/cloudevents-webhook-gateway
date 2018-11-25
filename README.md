@@ -27,3 +27,4 @@ To start cloudevents-gateway, specify the configuration file using the `-c` opti
 cloudevents-gateway currently supports the following webhooks.
 
 - Github
+- Alertmanager
