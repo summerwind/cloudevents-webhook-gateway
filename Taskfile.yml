@@ -1,0 +1,47 @@
+version: '2'
+
+vars:
+  NAME: cloudevents-gateway
+  VERSION: 0.1.0
+  COMMIT: {sh: git rev-parse --verify HEAD}
+  BUILD_FLAGS: -ldflags "-X main.VERSION={{.VERSION}} -X main.COMMIT={{.COMMIT}}"
+
+tasks:
+  build:
+    cmds:
+      - CGO_ENABLED=0 go build {{.BUILD_FLAGS}} .
+  test:
+    cmds:
+      - go vet ./...
+      - go test -v -coverprofile=cover.out ./...
+  cover:
+    deps: [test]
+    cmds:
+      - go tool cover -html=cover.out
+  container:
+    deps: [test, build]
+    cmds:
+      - docker build -t summerwind/{{.NAME}}:latest -t summerwind/{{.NAME}}:{{.VERSION}} .
+  package:
+    cmds:
+      - GOOS={{.OS}} GOARCH={{.ARCH}} CGO_ENABLED=0 go build {{.BUILD_FLAGS}} .
+      - tar -czf dist/{{.NAME}}_{{.OS}}_{{.ARCH}}.tar.gz {{.NAME}}
+      - rm -rf {{.NAME}}
+  dist:
+    deps: [test]
+    cmds:
+      - mkdir -p dist
+      - task: package
+        vars: {OS: "linux", ARCH: "amd64"}
+      - task: package
+        vars: {OS: "linux", ARCH: "arm64"}
+      - task: package
+        vars: {OS: "linux", ARCH: "arm"}
+      - task: package
+        vars: {OS: "darwin", ARCH: "amd64"}
+  vendor:
+    cmds:
+      - dep ensure -v
+  clean:
+    cmds:
+      - rm -rf {{.NAME}} dist cover.out
