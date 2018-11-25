@@ -1,0 +1,20 @@
+# Listening address of the gateway.
+listen: 0.0.0.0:14381
+
+# Configuration for the TLS certificate.
+tls:
+  # The path of TLS certificate file.
+  certFile: tls/server.pem
+  # The path of TLS private key file.
+  keyFile: tls/server-key.pem
+
+# Configuration for GitHub webhook.
+github:
+  # The path of the webhook endpoint.
+  path: /github
+  # Backend URL to forward CloudEvents. If this setting is empty,
+  # the Github endpoint will be disabled.
+  backend: http://127.0.0.1:3000
+  # Secret token for GitHub secret.
+  # See: https://developer.github.com/webhooks/securing/
+  secret: test
