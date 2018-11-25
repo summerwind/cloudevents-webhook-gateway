@@ -14,11 +14,14 @@ import (
 	"syscall"
 	"time"
 
+	uuid "github.com/satori/go.uuid"
+	yaml "gopkg.in/yaml.v2"
+
 	"github.com/spf13/cobra"
 	"github.com/summerwind/cloudevents-gateway/config"
 	"github.com/summerwind/cloudevents-gateway/webhook"
+	"github.com/summerwind/cloudevents-gateway/webhook/alertmanager"
 	"github.com/summerwind/cloudevents-gateway/webhook/github"
-	yaml "gopkg.in/yaml.v2"
 )
 
 var (
@@ -70,6 +73,15 @@ func newProxyHandler(backend *url.URL, parser webhook.Parser) (*httputil.Reverse
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "Parse error: %s", err)
 			return
+		}
+
+		if ce.EventID == "" {
+			id := uuid.NewV4()
+			if err != nil {
+				fmt.Fprintf(os.Stderr, "Unable to generate event ID: %s", err)
+				return
+			}
+			ce.EventID = id.String()
 		}
 
 		req.Body = body
@@ -135,6 +147,21 @@ func run(cmd *cobra.Command, args []string) error {
 		}
 
 		mux.Handle(c.GitHub.Path, handler)
+	}
+
+	if c.Alertmanager.Backend != "" {
+		backend, err := url.Parse(c.Alertmanager.Backend)
+		if err != nil {
+			return err
+		}
+		parser := alertmanager.NewParser()
+
+		handler, err := newProxyHandler(backend, parser)
+		if err != nil {
+			return err
+		}
+
+		mux.Handle(c.Alertmanager.Path, handler)
 	}
 
 	server := &http.Server{

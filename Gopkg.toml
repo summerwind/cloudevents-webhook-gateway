@@ -11,10 +11,18 @@
   version = "v2.2.1"
 
 [[constraint]]
+  name = "github.com/satori/go.uuid"
+  version = "v1.2.0"
+
+[[constraint]]
   name = "github.com/cloudevents/sdk-go"
   revision = "17c1655cb929797454995e53fd412c8ac55a7475"
 
 [[constraint]]
   name = "github.com/google/go-github"
   version = "v18.0.0"
+
+[[constraint]]
+  name = "github.com/prometheus/alertmanager"
+  version = "0.15.3"
 
