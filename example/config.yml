@@ -18,3 +18,11 @@ github:
   # Secret token for GitHub secret.
   # See: https://developer.github.com/webhooks/securing/
   secret: test
+
+# Configuration for Alertmanager webhook.
+alertmanager:
+  # The path of the webhook endpoint.
+  path: /alertmanager
+  # Backend URL to forward CloudEvents. If this setting is empty,
+  # the Alertmanager endpoint will be disabled.
+  backend: http://127.0.0.1:3000
