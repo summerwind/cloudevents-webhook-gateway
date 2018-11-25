@@ -19,8 +19,9 @@ tasks:
     cmds:
       - go tool cover -html=cover.out
   container:
-    deps: [test, build]
+    deps: [test]
     cmds:
+      - GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build {{.BUILD_FLAGS}} .
       - docker build -t summerwind/{{.NAME}}:latest -t summerwind/{{.NAME}}:{{.VERSION}} .
   package:
     cmds:
