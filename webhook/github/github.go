@@ -3,6 +3,7 @@ package github
 import (
 	"fmt"
 	"net/http"
+	"strings"
 	"time"
 
 	cloudevents "github.com/cloudevents/sdk-go/v01"
@@ -114,7 +115,8 @@ func (p *Parser) Parse(req *http.Request) (*cloudevents.Event, error) {
 		source = event.PullRequest.GetURL()
 		action = event.GetAction()
 	case *github.PushEvent:
-		source = event.Repo.GetHTMLURL()
+		ref := strings.Split(event.GetRef(), "/")
+		source = fmt.Sprintf("%s/tree/%s", event.Repo.GetHTMLURL(), ref[2])
 	case *github.RepositoryEvent:
 		source = event.Repo.GetHTMLURL()
 		action = event.GetAction()
