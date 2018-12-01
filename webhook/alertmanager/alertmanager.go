@@ -33,7 +33,7 @@ func (p *Parser) Parse(req *http.Request) (*cloudevents.Event, error) {
 		EventTime:        &t,
 		EventType:        fmt.Sprintf("io.prometheus.alertmanager.%s", msg.Status),
 		EventTypeVersion: msg.Version,
-		Source:           fmt.Sprintf("/groupKey/%s", msg.GroupKey),
+		Source:           msg.ExternalURL,
 		ContentType:      "application/json",
 	}
 
