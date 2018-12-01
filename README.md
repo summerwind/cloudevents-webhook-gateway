@@ -9,7 +9,7 @@ Download the latest binary from the [Releases](https://github.com/summerwind/clo
 Docker images are also available. Running cloudevents-gateway with Docker is as follows.
 
 ```
-$ docker run -it -v $PWD/config.yml:/config.yml -p 14381:1438 summerwind/cloudevents-gateway:latest
+$ docker run -it -v $PWD/config.yml:/config.yml -p 24381:24381 summerwind/cloudevents-gateway:latest
 ```
 
 ## Usage
