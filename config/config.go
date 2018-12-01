@@ -25,7 +25,7 @@ type AlertmanagerConfig struct {
 
 func New() *Config {
 	return &Config{
-		Listen: "0.0.0.0:14381",
+		Listen: "0.0.0.0:24381",
 		TLS:    &TLSConfig{},
 		GitHub: &GitHubConfig{
 			Path: "/github",

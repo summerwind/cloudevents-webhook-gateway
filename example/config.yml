@@ -1,5 +1,5 @@
 # Listening address of the gateway.
-listen: 0.0.0.0:14381
+listen: 0.0.0.0:24381
 
 # Configuration for the TLS certificate.
 tls:
