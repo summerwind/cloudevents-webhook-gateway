@@ -3,7 +3,6 @@ package github
 import (
 	"fmt"
 	"net/http"
-	"strings"
 	"time"
 
 	cloudevents "github.com/cloudevents/sdk-go/v01"
@@ -40,25 +39,25 @@ func (p *Parser) Parse(req *http.Request) (*cloudevents.Event, error) {
 
 	switch event := event.(type) {
 	case *github.CheckRunEvent:
-		source = event.CheckRun.GetHTMLURL()
+		source = event.CheckRun.GetURL()
 		action = event.GetAction()
 	case *github.CheckSuiteEvent:
 		source = event.CheckSuite.GetURL()
 	case *github.CommitCommentEvent:
-		source = event.Comment.GetHTMLURL()
+		source = event.Comment.GetURL()
 		action = event.GetAction()
 	case *github.CreateEvent:
-		source = event.Repo.GetHTMLURL()
+		source = event.Repo.GetURL()
 	case *github.DeleteEvent:
-		source = event.Repo.GetHTMLURL()
+		source = event.Repo.GetURL()
 	case *github.DeploymentEvent:
 		source = event.Deployment.GetURL()
 	case *github.DeploymentStatusEvent:
 		source = event.Deployment.GetURL()
 	case *github.ForkEvent:
-		source = event.Forkee.GetHTMLURL()
+		source = event.Forkee.GetURL()
 	case *github.GollumEvent:
-		source = event.Repo.GetHTMLURL()
+		source = event.Repo.GetURL()
 	case *github.InstallationEvent:
 		source = event.Installation.GetHTMLURL()
 		action = event.GetAction()
@@ -66,31 +65,31 @@ func (p *Parser) Parse(req *http.Request) (*cloudevents.Event, error) {
 		source = event.Installation.GetHTMLURL()
 		action = event.GetAction()
 	case *github.IssueCommentEvent:
-		source = event.Comment.GetHTMLURL()
+		source = event.Comment.GetURL()
 		action = event.GetAction()
 	case *github.IssuesEvent:
-		source = event.Issue.GetHTMLURL()
+		source = event.Issue.GetURL()
 		action = event.GetAction()
 	case *github.LabelEvent:
 		source = event.Label.GetURL()
 		action = event.GetAction()
 	case *github.MarketplacePurchaseEvent:
-		source = event.Sender.GetHTMLURL()
+		source = event.Sender.GetURL()
 		action = event.GetAction()
 	case *github.MemberEvent:
-		source = event.Member.GetHTMLURL()
+		source = event.Member.GetURL()
 		action = event.GetAction()
 	case *github.MembershipEvent:
 		source = event.Team.GetURL()
 		action = event.GetAction()
 	case *github.MilestoneEvent:
-		source = event.Milestone.GetHTMLURL()
+		source = event.Milestone.GetURL()
 		action = event.GetAction()
 	case *github.OrganizationEvent:
-		source = event.Organization.GetHTMLURL()
+		source = event.Organization.GetURL()
 		action = event.GetAction()
 	case *github.OrgBlockEvent:
-		source = event.Organization.GetHTMLURL()
+		source = event.Organization.GetURL()
 		action = event.GetAction()
 	case *github.PageBuildEvent:
 		source = event.Build.GetURL()
@@ -101,37 +100,36 @@ func (p *Parser) Parse(req *http.Request) (*cloudevents.Event, error) {
 		source = event.ProjectColumn.GetURL()
 		action = event.GetAction()
 	case *github.ProjectEvent:
-		source = event.Project.GetHTMLURL()
+		source = event.Project.GetURL()
 		action = event.GetAction()
 	case *github.PublicEvent:
-		source = event.Repo.GetHTMLURL()
+		source = event.Repo.GetURL()
 	case *github.PullRequestReviewCommentEvent:
-		source = event.Comment.GetHTMLURL()
+		source = event.Comment.GetURL()
 		action = event.GetAction()
 	case *github.PullRequestReviewEvent:
-		source = event.Review.GetHTMLURL()
+		source = event.PullRequest.GetURL()
 		action = event.GetAction()
 	case *github.PullRequestEvent:
 		source = event.PullRequest.GetURL()
 		action = event.GetAction()
 	case *github.PushEvent:
-		ref := strings.Split(event.GetRef(), "/")
-		source = fmt.Sprintf("%s/tree/%s", event.Repo.GetHTMLURL(), ref[2])
+		source = fmt.Sprintf("%s/git/%s", event.Repo.GetURL(), event.GetRef())
 	case *github.RepositoryEvent:
-		source = event.Repo.GetHTMLURL()
+		source = event.Repo.GetURL()
 		action = event.GetAction()
 	case *github.ReleaseEvent:
-		source = event.Release.GetHTMLURL()
+		source = event.Release.GetURL()
 		action = event.GetAction()
 	case *github.StatusEvent:
-		source = event.Commit.GetHTMLURL()
+		source = event.Commit.GetURL()
 	case *github.TeamEvent:
 		source = event.Team.GetURL()
 		action = event.GetAction()
 	case *github.TeamAddEvent:
 		source = event.Team.GetURL()
 	case *github.WatchEvent:
-		source = event.Repo.GetHTMLURL()
+		source = event.Repo.GetURL()
 		action = event.GetAction()
 	}
 
