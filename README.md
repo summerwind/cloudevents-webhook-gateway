@@ -28,3 +28,4 @@ cloudevents-gateway currently supports the following webhooks.
 
 - Github
 - Alertmanager
+- Anchore Engine

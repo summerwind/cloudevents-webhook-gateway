@@ -26,3 +26,11 @@ alertmanager:
   # Backend URL to forward CloudEvents. If this setting is empty,
   # the Alertmanager endpoint will be disabled.
   backend: http://127.0.0.1:3000
+
+# Configuration for Anchore Engine webhook.
+anchore-engine:
+  # The path of the webhook endpoint.
+  path: /anchore-engine
+  # Backend URL to forward CloudEvents. If this setting is empty,
+  # the Anchore Engine endpoint will be disabled.
+  backend: http://127.0.0.1:3000

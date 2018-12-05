@@ -1,10 +1,11 @@
 package config
 
 type Config struct {
-	Listen       string              `json:"listen"`
-	TLS          *TLSConfig          `json:"tls"`
-	GitHub       *GitHubConfig       `json:"github"`
-	Alertmanager *AlertmanagerConfig `json:"alertmanager"`
+	Listen        string               `json:"listen"`
+	TLS           *TLSConfig           `json:"tls"`
+	GitHub        *GitHubConfig        `json:"github"`
+	Alertmanager  *AlertmanagerConfig  `json:"alertmanager"`
+	AnchoreEngine *AnchoreEngineConfig `json:"anchore-engine"`
 }
 
 type TLSConfig struct {
@@ -23,6 +24,11 @@ type AlertmanagerConfig struct {
 	Backend string `json:"backend"`
 }
 
+type AnchoreEngineConfig struct {
+	Path    string `json:"path"`
+	Backend string `json:"backend"`
+}
+
 func New() *Config {
 	return &Config{
 		Listen: "0.0.0.0:24381",
@@ -32,6 +38,9 @@ func New() *Config {
 		},
 		Alertmanager: &AlertmanagerConfig{
 			Path: "/alertmanager",
+		},
+		AnchoreEngine: &AnchoreEngineConfig{
+			Path: "/anchore-engine",
 		},
 	}
 }
