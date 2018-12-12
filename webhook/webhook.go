@@ -3,7 +3,7 @@ package webhook
 import (
 	"net/http"
 
-	cloudevents "github.com/cloudevents/sdk-go/v01"
+	cloudevents "github.com/cloudevents/sdk-go/v02"
 )
 
 type Parser interface {

@@ -4,9 +4,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"net/url"
 	"time"
 
-	cloudevents "github.com/cloudevents/sdk-go/v01"
+	cloudevents "github.com/cloudevents/sdk-go/v02"
 )
 
 type Webhook struct {
@@ -41,15 +42,19 @@ func (p *Parser) Parse(req *http.Request) (*cloudevents.Event, error) {
 	}
 
 	t := time.Now()
+
 	source := fmt.Sprintf("/v1/subscriptions?subscription_key=%s", w.Data.NotificationPayload.SubscriptionKey)
+	s, err := url.Parse(source)
+	if err != nil {
+		return nil, err
+	}
 
 	ce := &cloudevents.Event{
-		EventTime:        &t,
-		EventID:          w.Data.NotificationPayload.NotificationID,
-		EventType:        fmt.Sprintf("com.anchore.anchore-engine.%s", w.Data.NotificationType),
-		EventTypeVersion: "1.0",
-		Source:           source,
-		ContentType:      "application/json",
+		Time:        &t,
+		ID:          w.Data.NotificationPayload.NotificationID,
+		Type:        fmt.Sprintf("com.anchore.anchore-engine.%s", w.Data.NotificationType),
+		Source:      *s,
+		ContentType: "application/json",
 	}
 
 	return ce, nil

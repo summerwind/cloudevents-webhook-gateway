@@ -3,9 +3,10 @@ package github
 import (
 	"fmt"
 	"net/http"
+	"net/url"
 	"time"
 
-	cloudevents "github.com/cloudevents/sdk-go/v01"
+	cloudevents "github.com/cloudevents/sdk-go/v02"
 	"github.com/google/go-github/github"
 )
 
@@ -141,14 +142,17 @@ func (p *Parser) Parse(req *http.Request) (*cloudevents.Event, error) {
 
 	t := time.Now()
 
+	s, err := url.Parse(source)
+	if err != nil {
+		return nil, err
+	}
+
 	ce := &cloudevents.Event{
-		EventID:          github.DeliveryID(req),
-		EventTime:        &t,
-		EventType:        eventType,
-		EventTypeVersion: "3",
-		Source:           source,
-		SchemaURL:        "https://developer.github.com/v3/activity/events/types",
-		ContentType:      "application/json",
+		ID:          github.DeliveryID(req),
+		Time:        &t,
+		Type:        eventType,
+		Source:      *s,
+		ContentType: "application/json",
 	}
 
 	return ce, nil

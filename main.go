@@ -76,13 +76,13 @@ func newProxyHandler(backend *url.URL, parser webhook.Parser) (*httputil.Reverse
 			return
 		}
 
-		if ce.EventID == "" {
+		if ce.ID == "" {
 			id := uuid.NewV4()
 			if err != nil {
 				fmt.Fprintf(os.Stderr, "Unable to generate event ID: %s", err)
 				return
 			}
-			ce.EventID = id.String()
+			ce.ID = id.String()
 		}
 
 		req.Body = body
@@ -92,21 +92,20 @@ func newProxyHandler(backend *url.URL, parser webhook.Parser) (*httputil.Reverse
 		req.URL.Host = backend.Host
 		req.URL.Path = backend.Path
 
-		req.Header.Set("CE-CloudEventsVersion", "0.1")
-		req.Header.Set("CE-EventID", ce.EventID)
-		req.Header.Set("CE-EventTime", ce.EventTime.Format(time.RFC3339))
-		req.Header.Set("CE-EventType", ce.EventType)
-		req.Header.Set("CE-EventTypeVersion", ce.EventTypeVersion)
-		req.Header.Set("CE-Source", ce.Source)
+		req.Header.Set("CE-SpecVersion", ce.SpecVersion)
+		req.Header.Set("CE-ID", ce.ID)
+		req.Header.Set("CE-Time", ce.Time.Format(time.RFC3339))
+		req.Header.Set("CE-Type", ce.Type)
+		req.Header.Set("CE-Source", ce.Source.String())
 
-		if ce.SchemaURL != "" {
-			req.Header.Set("CE-SchemaURL", ce.SchemaURL)
+		if ce.SchemaURL.String() != "" {
+			req.Header.Set("CE-SchemaURL", ce.SchemaURL.String())
 		}
 		if ce.ContentType != "" {
 			req.Header.Set("Content-Type", ce.ContentType)
 		}
 
-		log.Printf("remote_addr:%s event_id:%s event_type:%s source:%s", req.RemoteAddr, ce.EventID, ce.EventType, ce.Source)
+		log.Printf("remote_addr:%s event_id:%s event_type:%s source:%s", req.RemoteAddr, ce.ID, ce.Type, ce.Source)
 	}
 
 	return &httputil.ReverseProxy{Director: director}, nil
