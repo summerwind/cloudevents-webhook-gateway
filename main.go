@@ -22,6 +22,7 @@ import (
 	"github.com/summerwind/cloudevents-gateway/webhook"
 	"github.com/summerwind/cloudevents-gateway/webhook/alertmanager"
 	"github.com/summerwind/cloudevents-gateway/webhook/anchoreengine"
+	"github.com/summerwind/cloudevents-gateway/webhook/dockerhub"
 	"github.com/summerwind/cloudevents-gateway/webhook/github"
 )
 
@@ -147,6 +148,21 @@ func run(cmd *cobra.Command, args []string) error {
 		}
 
 		mux.Handle(c.GitHub.Path, handler)
+	}
+
+	if c.DockerHub.Backend != "" {
+		backend, err := url.Parse(c.DockerHub.Backend)
+		if err != nil {
+			return err
+		}
+		parser := dockerhub.NewParser()
+
+		handler, err := newProxyHandler(backend, parser)
+		if err != nil {
+			return err
+		}
+
+		mux.Handle(c.DockerHub.Path, handler)
 	}
 
 	if c.Alertmanager.Backend != "" {

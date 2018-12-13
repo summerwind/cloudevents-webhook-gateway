@@ -19,6 +19,14 @@ github:
   # See: https://developer.github.com/webhooks/securing/
   secret: test
 
+# Configuration for Dockr Hub webhook.
+dockerhub:
+  # The path of the webhook endpoint.
+  path: /dockerhub
+  # Backend URL to forward CloudEvents. If this setting is empty,
+  # the Docker Hub endpoint will be disabled.
+  backend: http://127.0.0.1:3000
+
 # Configuration for Alertmanager webhook.
 alertmanager:
   # The path of the webhook endpoint.

@@ -4,6 +4,7 @@ type Config struct {
 	Listen        string               `json:"listen"`
 	TLS           *TLSConfig           `json:"tls"`
 	GitHub        *GitHubConfig        `json:"github"`
+	DockerHub     *DockerHubConfig     `json:"dockerhub"`
 	Alertmanager  *AlertmanagerConfig  `json:"alertmanager"`
 	AnchoreEngine *AnchoreEngineConfig `json:"anchore-engine"`
 }
@@ -17,6 +18,11 @@ type GitHubConfig struct {
 	Path    string `json:"path"`
 	Backend string `json:"backend"`
 	Secret  string `json:"secret"`
+}
+
+type DockerHubConfig struct {
+	Path    string `json:"path"`
+	Backend string `json:"backend"`
 }
 
 type AlertmanagerConfig struct {
@@ -35,6 +41,9 @@ func New() *Config {
 		TLS:    &TLSConfig{},
 		GitHub: &GitHubConfig{
 			Path: "/github",
+		},
+		DockerHub: &DockerHubConfig{
+			Path: "/dockerhub",
 		},
 		Alertmanager: &AlertmanagerConfig{
 			Path: "/alertmanager",
