@@ -105,7 +105,7 @@ func newProxyHandler(backend *url.URL, parser webhook.Parser) (*httputil.Reverse
 			req.Header.Set("Content-Type", ce.ContentType)
 		}
 
-		log.Printf("remote_addr:%s event_id:%s event_type:%s source:%s", req.RemoteAddr, ce.ID, ce.Type, ce.Source)
+		log.Printf("remote_addr:%s event_id:%s event_type:%s source:%s", req.RemoteAddr, ce.ID, ce.Type, ce.Source.String())
 	}
 
 	return &httputil.ReverseProxy{Director: director}, nil
