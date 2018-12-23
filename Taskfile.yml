@@ -40,9 +40,6 @@ tasks:
         vars: {OS: "linux", ARCH: "arm"}
       - task: package
         vars: {OS: "darwin", ARCH: "amd64"}
-  vendor:
-    cmds:
-      - dep ensure -v
   clean:
     cmds:
       - rm -rf {{.NAME}} dist cover.out

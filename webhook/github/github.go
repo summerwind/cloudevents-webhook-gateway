@@ -7,7 +7,7 @@ import (
 	"time"
 
 	cloudevents "github.com/cloudevents/sdk-go/v02"
-	"github.com/google/go-github/github"
+	"github.com/google/go-github/v21/github"
 )
 
 type Parser struct {
