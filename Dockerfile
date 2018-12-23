@@ -1,5 +1,5 @@
 FROM scratch
 
-COPY ./cloudevents-gateway /bin/cloudevents-gateway
+COPY ./cloudevents-webhook-gateway /bin/cloudevents-webhook-gateway
 
-ENTRYPOINT ["/bin/cloudevents-gateway"]
+ENTRYPOINT ["/bin/cloudevents-webhook-gateway"]

@@ -225,8 +225,8 @@ func run(cmd *cobra.Command, args []string) error {
 
 func main() {
 	var cmd = &cobra.Command{
-		Use:   "cloudevents-gateway",
-		Short: "Wehbook gateway for CloudEvents.",
+		Use:   "cloudevents-webhook-gateway",
+		Short: "Wehbook gateway for CloudEvents",
 		RunE:  run,
 
 		SilenceErrors: true,
