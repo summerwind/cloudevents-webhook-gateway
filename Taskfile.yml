@@ -40,6 +40,9 @@ tasks:
         vars: {OS: "linux", ARCH: "arm"}
       - task: package
         vars: {OS: "darwin", ARCH: "amd64"}
+  module:
+    cmds:
+      - go mod download
   clean:
     cmds:
       - rm -rf {{.NAME}} dist cover.out
