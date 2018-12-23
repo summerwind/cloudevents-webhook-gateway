@@ -18,12 +18,12 @@ import (
 	yaml "gopkg.in/yaml.v2"
 
 	"github.com/spf13/cobra"
-	"github.com/summerwind/cloudevents-gateway/config"
-	"github.com/summerwind/cloudevents-gateway/webhook"
-	"github.com/summerwind/cloudevents-gateway/webhook/alertmanager"
-	"github.com/summerwind/cloudevents-gateway/webhook/anchoreengine"
-	"github.com/summerwind/cloudevents-gateway/webhook/dockerhub"
-	"github.com/summerwind/cloudevents-gateway/webhook/github"
+	"github.com/summerwind/cloudevents-webhook-gateway/config"
+	"github.com/summerwind/cloudevents-webhook-gateway/webhook"
+	"github.com/summerwind/cloudevents-webhook-gateway/webhook/alertmanager"
+	"github.com/summerwind/cloudevents-webhook-gateway/webhook/anchoreengine"
+	"github.com/summerwind/cloudevents-webhook-gateway/webhook/dockerhub"
+	"github.com/summerwind/cloudevents-webhook-gateway/webhook/github"
 )
 
 var (
