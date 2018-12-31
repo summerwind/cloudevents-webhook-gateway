@@ -94,7 +94,7 @@ func newProxyHandler(backend *url.URL, parser webhook.Parser) (*httputil.Reverse
 		req.URL.Host = backend.Host
 		req.URL.Path = backend.Path
 
-		req.Header.Set("CE-SpecVersion", ce.SpecVersion)
+		req.Header.Set("CE-SpecVersion", "0.2")
 		req.Header.Set("CE-ID", ce.ID)
 		req.Header.Set("CE-Time", ce.Time.Format(time.RFC3339))
 		req.Header.Set("CE-Type", ce.Type)
