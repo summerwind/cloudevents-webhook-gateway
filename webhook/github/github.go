@@ -1,6 +1,7 @@
 package github
 
 import (
+	"errors"
 	"fmt"
 	"net/http"
 	"net/url"
@@ -21,6 +22,10 @@ func NewParser(secret string) *Parser {
 }
 
 func (p *Parser) Parse(req *http.Request) (*cloudevents.Event, error) {
+	if req.Body == nil {
+		return nil, errors.New("empty payload")
+	}
+
 	payload, err := github.ValidatePayload(req, p.secret)
 	if err != nil {
 		return nil, err
@@ -132,6 +137,10 @@ func (p *Parser) Parse(req *http.Request) (*cloudevents.Event, error) {
 	case *github.WatchEvent:
 		source = event.Repo.GetURL()
 		action = event.GetAction()
+	}
+
+	if source == "" {
+		return nil, errors.New("unsupported event type")
 	}
 
 	if action == "" {
