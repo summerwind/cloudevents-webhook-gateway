@@ -19,6 +19,7 @@ import (
 
 	"github.com/spf13/cobra"
 	"github.com/summerwind/cloudevents-webhook-gateway/config"
+	"github.com/summerwind/cloudevents-webhook-gateway/proxy"
 	"github.com/summerwind/cloudevents-webhook-gateway/webhook"
 	"github.com/summerwind/cloudevents-webhook-gateway/webhook/alertmanager"
 	"github.com/summerwind/cloudevents-webhook-gateway/webhook/anchoreengine"
@@ -52,18 +53,18 @@ func newProxyHandler(backend *url.URL, parser webhook.Parser) (*httputil.Reverse
 	director := func(req *http.Request) {
 		// Copy request body
 		body := req.Body
-		if body != http.NoBody {
+		if body != nil && body != http.NoBody {
 			var buf bytes.Buffer
 
 			_, err := buf.ReadFrom(body)
 			if err != nil {
-				fmt.Fprintf(os.Stderr, "Unable to read request body: %s", err)
+				fmt.Fprintf(os.Stderr, "unable to read request body: %s\n", err)
 				return
 			}
 
 			err = body.Close()
 			if err != nil {
-				fmt.Fprintf(os.Stderr, "Error: %s", err)
+				fmt.Fprintf(os.Stderr, "error: %s\n", err)
 				return
 			}
 
@@ -73,14 +74,14 @@ func newProxyHandler(backend *url.URL, parser webhook.Parser) (*httputil.Reverse
 
 		ce, err := parser.Parse(req)
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "Parse error: %s", err)
+			fmt.Fprintf(os.Stderr, "parse error: %s\n", err)
 			return
 		}
 
 		if ce.ID == "" {
 			id := uuid.NewV4()
 			if err != nil {
-				fmt.Fprintf(os.Stderr, "Unable to generate event ID: %s", err)
+				fmt.Fprintf(os.Stderr, "unable to generate event ID: %s\n", err)
 				return
 			}
 			ce.ID = id.String()
@@ -109,7 +110,9 @@ func newProxyHandler(backend *url.URL, parser webhook.Parser) (*httputil.Reverse
 		log.Printf("remote_addr:%s event_id:%s event_type:%s source:%s", req.RemoteAddr, ce.ID, ce.Type, ce.Source.String())
 	}
 
-	return &httputil.ReverseProxy{Director: director}, nil
+	transport := proxy.NewTransport()
+
+	return &httputil.ReverseProxy{Director: director, Transport: transport}, nil
 }
 
 // run starts the HTTP server to process authentication.
