@@ -120,7 +120,16 @@ func (p *Parser) Parse(req *http.Request) (*cloudevents.Event, error) {
 		source = event.PullRequest.GetURL()
 		action = event.GetAction()
 	case *github.PushEvent:
-		source = fmt.Sprintf("%s/git/%s", event.Repo.GetURL(), event.GetRef())
+		// API URL is not set in "repository.url", need to generate URL from statuses URL.
+		base, err := url.Parse(event.Repo.GetStatusesURL())
+		if err != nil {
+			return nil, err
+		}
+		ref, err := url.Parse(fmt.Sprintf("../git/%s", event.GetRef()))
+		if err != nil {
+			return nil, err
+		}
+		source = base.ResolveReference(ref).String()
 	case *github.RepositoryEvent:
 		source = event.Repo.GetURL()
 		action = event.GetAction()
