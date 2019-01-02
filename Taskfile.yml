@@ -8,6 +8,7 @@ vars:
 
 tasks:
   build:
+    deps: [test]
     cmds:
       - CGO_ENABLED=0 go build {{.BUILD_FLAGS}} .
   test:
