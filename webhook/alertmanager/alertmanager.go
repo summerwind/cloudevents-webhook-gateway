@@ -2,13 +2,17 @@ package alertmanager
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"net/url"
 	"time"
 
 	cloudevents "github.com/cloudevents/sdk-go/v02"
 	"github.com/prometheus/alertmanager/notify"
+)
+
+const (
+	eventType   = "io.prometheus.alertmanager.notify"
+	contentType = "application/json"
 )
 
 type Parser struct{}
@@ -37,9 +41,9 @@ func (p *Parser) Parse(req *http.Request) (*cloudevents.Event, error) {
 
 	ce := &cloudevents.Event{
 		Time:        &t,
-		Type:        fmt.Sprintf("io.prometheus.alertmanager.%s", msg.Status),
+		Type:        eventType,
 		Source:      *s,
-		ContentType: "application/json",
+		ContentType: contentType,
 	}
 
 	return ce, nil

@@ -49,7 +49,7 @@ func TestParse(t *testing.T) {
 		t.Fatalf("parser error: %v", err)
 	}
 
-	if ce.Type != "io.prometheus.alertmanager.firing" {
+	if ce.Type != "io.prometheus.alertmanager.notify" {
 		t.Errorf("invalid type: %v", ce.Type)
 	}
 	if ce.Source.String() != "http://127.0.0.1:9093" {
