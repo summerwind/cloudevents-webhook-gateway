@@ -1,0 +1,271 @@
+{
+    "created_at": 1541630774,
+    "userId": "admin",
+    "tries": 0,
+    "record_state_val": null,
+    "last_updated": 1541630773,
+    "dataId": "3d2a3c85-244a-4a52-a412-3142d307f8ce",
+    "queueId": "policy_eval",
+    "max_tries": 1541630803,
+    "data": {
+        "notification_user": "admin",
+        "notification_user_email": "admin@system",
+        "notification_type": "policy_eval",
+        "notification_payload": {
+            "curr_eval": {
+                "bundle": {
+                    "blacklisted_images": [
+
+                    ],
+                    "description": "ablh",
+                    "id": "e4d35a5a-444e-4c39-88b5-2ad3c99ca2b1",
+                    "last_updated": 1541023889,
+                    "mappings": [
+                        {
+                            "id": "08569fb2-83d4-46f2-9a02-5b85ba46f124",
+                            "image": {
+                                "type": "tag",
+                                "value": "*"
+                            },
+                            "name": "default",
+                            "policy_ids": [
+                                "c69d766d-9f41-44d5-8cef-acab1c5b0e0a"
+                            ],
+                            "registry": "*",
+                            "repository": "*",
+                            "whitelist_ids": [
+
+                            ]
+                        }
+                    ],
+                    "name": "blah",
+                    "policies": [
+                        {
+                            "comment": "",
+                            "id": "c69d766d-9f41-44d5-8cef-acab1c5b0e0a",
+                            "name": "default",
+                            "rules": [
+                                {
+                                    "action": "STOP",
+                                    "gate": "always",
+                                    "id": "5894320e-f8c8-4368-9ea2-16b255bc5f3a",
+                                    "params": [
+
+                                    ],
+                                    "trigger": "always"
+                                }
+                            ],
+                            "version": "1_0"
+                        }
+                    ],
+                    "version": "1_0",
+                    "whitelisted_images": [
+
+                    ],
+                    "whitelists": [
+
+                    ]
+                },
+                "created_at": 1541630773,
+                "evaluation_problems": [
+
+                ],
+                "final_action": "stop",
+                "final_action_reason": "policy_evaluation",
+                "image_id": "de82dc9e4f0bd379ebc7232840408aea2a0f6c83e5010411ad713d606ae9c61f",
+                "last_modified": 1541630773,
+                "matched_blacklisted_images_rule": false,
+                "matched_mapping_rule": {
+                    "id": "08569fb2-83d4-46f2-9a02-5b85ba46f124",
+                    "image": {
+                        "type": "tag",
+                        "value": "*"
+                    },
+                    "name": "default",
+                    "policy_ids": [
+                        "c69d766d-9f41-44d5-8cef-acab1c5b0e0a"
+                    ],
+                    "registry": "*",
+                    "repository": "*",
+                    "whitelist_ids": [
+
+                    ]
+                },
+                "matched_whitelisted_images_rule": false,
+                "result": {
+                    "de82dc9e4f0bd379ebc7232840408aea2a0f6c83e5010411ad713d606ae9c61f": {
+                        "result": {
+                            "final_action": "stop",
+                            "header": [
+                                "Image_Id",
+                                "Repo_Tag",
+                                "Trigger_Id",
+                                "Gate",
+                                "Trigger",
+                                "Check_Output",
+                                "Gate_Action",
+                                "Whitelisted",
+                                "Policy_Id"
+                            ],
+                            "row_count": 1,
+                            "rows": [
+                                [
+                                    "de82dc9e4f0bd379ebc7232840408aea2a0f6c83e5010411ad713d606ae9c61f",
+                                    "docker.io/dnurmi/testrepo:latest",
+                                    "always",
+                                    "always",
+                                    "always",
+                                    "Unconditional trigger match",
+                                    "stop",
+                                    false,
+                                    "c69d766d-9f41-44d5-8cef-acab1c5b0e0a"
+                                ]
+                            ]
+                        }
+                    },
+                    "policy_data": [
+
+                    ],
+                    "policy_name": "",
+                    "whitelist_data": [
+
+                    ],
+                    "whitelist_names": [
+
+                    ]
+                },
+                "tag": "docker.io/dnurmi/testrepo:latest",
+                "user_id": "admin"
+            },
+            "last_eval": {
+                "bundle": {
+                    "blacklisted_images": [
+
+                    ],
+                    "description": "ablh",
+                    "id": "e4d35a5a-444e-4c39-88b5-2ad3c99ca2b1",
+                    "last_updated": 1541023889,
+                    "mappings": [
+                        {
+                            "id": "08569fb2-83d4-46f2-9a02-5b85ba46f124",
+                            "image": {
+                                "type": "tag",
+                                "value": "*"
+                            },
+                            "name": "default",
+                            "policy_ids": [
+                                "c69d766d-9f41-44d5-8cef-acab1c5b0e0a"
+                            ],
+                            "registry": "*",
+                            "repository": "*",
+                            "whitelist_ids": [
+
+                            ]
+                        }
+                    ],
+                    "name": "blah",
+                    "policies": [
+                        {
+                            "comment": "",
+                            "id": "c69d766d-9f41-44d5-8cef-acab1c5b0e0a",
+                            "name": "default",
+                            "rules": [
+                                {
+                                    "action": "GO",
+                                    "gate": "always",
+                                    "id": "5894320e-f8c8-4368-9ea2-16b255bc5f3a",
+                                    "params": [
+
+                                    ],
+                                    "trigger": "always"
+                                }
+                            ],
+                            "version": "1_0"
+                        }
+                    ],
+                    "version": "1_0",
+                    "whitelisted_images": [
+
+                    ],
+                    "whitelists": [
+
+                    ]
+                },
+                "created_at": 1541630761,
+                "evaluation_problems": [
+
+                ],
+                "final_action": "go",
+                "final_action_reason": "policy_evaluation",
+                "image_id": "de82dc9e4f0bd379ebc7232840408aea2a0f6c83e5010411ad713d606ae9c61f",
+                "last_modified": 1541630761,
+                "matched_blacklisted_images_rule": false,
+                "matched_mapping_rule": {
+                    "id": "08569fb2-83d4-46f2-9a02-5b85ba46f124",
+                    "image": {
+                        "type": "tag",
+                        "value": "*"
+                    },
+                    "name": "default",
+                    "policy_ids": [
+                        "c69d766d-9f41-44d5-8cef-acab1c5b0e0a"
+                    ],
+                    "registry": "*",
+                    "repository": "*",
+                    "whitelist_ids": [
+
+                    ]
+                },
+                "matched_whitelisted_images_rule": false,
+                "result": {
+                    "de82dc9e4f0bd379ebc7232840408aea2a0f6c83e5010411ad713d606ae9c61f": {
+                        "result": {
+                            "final_action": "go",
+                            "header": [
+                                "Image_Id",
+                                "Repo_Tag",
+                                "Trigger_Id",
+                                "Gate",
+                                "Trigger",
+                                "Check_Output",
+                                "Gate_Action",
+                                "Whitelisted",
+                                "Policy_Id"
+                            ],
+                            "row_count": 1,
+                            "rows": [
+                                [
+                                    "de82dc9e4f0bd379ebc7232840408aea2a0f6c83e5010411ad713d606ae9c61f",
+                                    "docker.io/dnurmi/testrepo:latest",
+                                    "always",
+                                    "always",
+                                    "always",
+                                    "Unconditional trigger match",
+                                    "go",
+                                    false,
+                                    "c69d766d-9f41-44d5-8cef-acab1c5b0e0a"
+                                ]
+                            ]
+                        }
+                    },
+                    "policy_data": [
+
+                    ],
+                    "policy_name": "",
+                    "whitelist_data": [
+
+                    ],
+                    "whitelist_names": [
+
+                    ]
+                },
+                "tag": "docker.io/dnurmi/testrepo:latest",
+                "user_id": "admin"
+            },
+            "notificationId": "3d2a3c85-244a-4a52-a412-3142d307f8ce",
+            "subscription_key": "docker.io/dnurmi/testrepo:latest",
+            "userId": "admin"
+        }
+    },
+    "record_state_key": "active"
+}

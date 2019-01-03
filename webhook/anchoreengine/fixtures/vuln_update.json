@@ -1,0 +1,314 @@
+{
+    "record_state_key": "active", 
+    "last_updated": 1517784969, 
+    "queueId": "vuln_update", 
+    "record_state_val": null, 
+    "created_at": 1517784969, 
+    "userId": "admin", 
+    "tries": 0, 
+    "dataId": "60ca8b9b-2b81-4196-a9f6-278af09d9a6e", 
+    "max_tries": 1517784999, 
+    "data": {
+        "notification_user": "admin", 
+        "notification_type": "vuln_update", 
+        "notification_user_email": "admin@myemail.com", 
+        "notification_payload": {
+            "notificationId": "60ca8b9b-2b81-4196-a9f6-278af09d9a6e", 
+            "userId": "admin", 
+            "subscription_key": "docker.io/dnurmi/testrepo:latest", 
+            "diff_vulnerability_result": {
+                "updated": [], 
+                "removed": [
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-2781", 
+                        "Severity": "Low", 
+                        "CVE_ID": "CVE-2016-2781", 
+                        "Vulnerable_Package": "coreutils-8.25-2ubuntu3~16.04"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2018-6485", 
+                        "Severity": "Medium", 
+                        "CVE_ID": "CVE-2018-6485", 
+                        "Vulnerable_Package": "multiarch-support-2.23-0ubuntu10"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-15908", 
+                        "Severity": "Medium", 
+                        "CVE_ID": "CVE-2017-15908", 
+                        "Vulnerable_Package": "systemd-sysv-229-4ubuntu21"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-1238", 
+                        "Severity": "Medium", 
+                        "CVE_ID": "CVE-2016-1238", 
+                        "Vulnerable_Package": "perl-base-5.22.1-9ubuntu0.2"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2018-1049", 
+                        "Severity": "Medium", 
+                        "CVE_ID": "CVE-2018-1049", 
+                        "Vulnerable_Package": "systemd-sysv-229-4ubuntu21"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-3189", 
+                        "Severity": "Low", 
+                        "CVE_ID": "CVE-2016-3189", 
+                        "Vulnerable_Package": "libbz2-1.0-1.0.6-8"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2015-5180", 
+                        "Severity": "Low", 
+                        "CVE_ID": "CVE-2015-5180", 
+                        "Vulnerable_Package": "multiarch-support-2.23-0ubuntu10"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-10228", 
+                        "Severity": "Negligible", 
+                        "CVE_ID": "CVE-2016-10228", 
+                        "Vulnerable_Package": "multiarch-support-2.23-0ubuntu10"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-13729", 
+                        "Severity": "Negligible", 
+                        "CVE_ID": "CVE-2017-13729", 
+                        "Vulnerable_Package": "ncurses-bin-6.0+20160213-1ubuntu1"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-13728", 
+                        "Severity": "Negligible", 
+                        "CVE_ID": "CVE-2017-13728", 
+                        "Vulnerable_Package": "ncurses-bin-6.0+20160213-1ubuntu1"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-13846", 
+                        "Severity": "Medium", 
+                        "CVE_ID": "CVE-2017-13846", 
+                        "Vulnerable_Package": "libpcre3-2:8.38-3.1"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7186", 
+                        "Severity": "Low", 
+                        "CVE_ID": "CVE-2017-7186", 
+                        "Vulnerable_Package": "libpcre3-2:8.38-3.1"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-8283", 
+                        "Severity": "Negligible", 
+                        "CVE_ID": "CVE-2017-8283", 
+                        "Vulnerable_Package": "dpkg-1.18.4ubuntu1.3"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-8804", 
+                        "Severity": "Medium", 
+                        "CVE_ID": "CVE-2017-8804", 
+                        "Vulnerable_Package": "multiarch-support-2.23-0ubuntu10"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-5011", 
+                        "Severity": "Low", 
+                        "CVE_ID": "CVE-2016-5011", 
+                        "Vulnerable_Package": "util-linux-2.27.1-6ubuntu3.3"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2018-10000", 
+                        "Severity": "High", 
+                        "CVE_ID": "CVE-2018-10000", 
+                        "Vulnerable_Package": "multiarch-support-2.23-0ubuntu10"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-18078", 
+                        "Severity": "Low", 
+                        "CVE_ID": "CVE-2017-18078", 
+                        "Vulnerable_Package": "systemd-sysv-229-4ubuntu21"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-10685", 
+                        "Severity": "Negligible", 
+                        "CVE_ID": "CVE-2017-10685", 
+                        "Vulnerable_Package": "ncurses-bin-6.0+20160213-1ubuntu1"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-10684", 
+                        "Severity": "Negligible", 
+                        "CVE_ID": "CVE-2017-10684", 
+                        "Vulnerable_Package": "ncurses-bin-6.0+20160213-1ubuntu1"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7246", 
+                        "Severity": "Negligible", 
+                        "CVE_ID": "CVE-2017-7246", 
+                        "Vulnerable_Package": "libpcre3-2:8.38-3.1"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7244", 
+                        "Severity": "Low", 
+                        "CVE_ID": "CVE-2017-7244", 
+                        "Vulnerable_Package": "libpcre3-2:8.38-3.1"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7245", 
+                        "Severity": "Negligible", 
+                        "CVE_ID": "CVE-2017-7245", 
+                        "Vulnerable_Package": "libpcre3-2:8.38-3.1"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-2779", 
+                        "Severity": "Low", 
+                        "CVE_ID": "CVE-2016-2779", 
+                        "Vulnerable_Package": "util-linux-2.27.1-6ubuntu3.3"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2013-4235", 
+                        "Severity": "Low", 
+                        "CVE_ID": "CVE-2013-4235", 
+                        "Vulnerable_Package": "passwd-1:4.2-3.1ubuntu5.3"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-6512", 
+                        "Severity": "Low", 
+                        "CVE_ID": "CVE-2017-6512", 
+                        "Vulnerable_Package": "perl-base-5.22.1-9ubuntu0.2"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-4484", 
+                        "Severity": "Low", 
+                        "CVE_ID": "CVE-2016-4484", 
+                        "Vulnerable_Package": "libcryptsetup4-2:1.6.6-5ubuntu2.1"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-12424", 
+                        "Severity": "Low", 
+                        "CVE_ID": "CVE-2017-12424", 
+                        "Vulnerable_Package": "passwd-1:4.2-3.1ubuntu5.3"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-11112", 
+                        "Severity": "Negligible", 
+                        "CVE_ID": "CVE-2017-11112", 
+                        "Vulnerable_Package": "ncurses-bin-6.0+20160213-1ubuntu1"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-11113", 
+                        "Severity": "Negligible", 
+                        "CVE_ID": "CVE-2017-11113", 
+                        "Vulnerable_Package": "ncurses-bin-6.0+20160213-1ubuntu1"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-17512", 
+                        "Severity": "Medium", 
+                        "CVE_ID": "CVE-2017-17512", 
+                        "Vulnerable_Package": "sensible-utils-0.0.9"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-6004", 
+                        "Severity": "Low", 
+                        "CVE_ID": "CVE-2017-6004", 
+                        "Vulnerable_Package": "libpcre3-2:8.38-3.1"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-13730", 
+                        "Severity": "Negligible", 
+                        "CVE_ID": "CVE-2017-13730", 
+                        "Vulnerable_Package": "ncurses-bin-6.0+20160213-1ubuntu1"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-13731", 
+                        "Severity": "Negligible", 
+                        "CVE_ID": "CVE-2017-13731", 
+                        "Vulnerable_Package": "ncurses-bin-6.0+20160213-1ubuntu1"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-13732", 
+                        "Severity": "Negligible", 
+                        "CVE_ID": "CVE-2017-13732", 
+                        "Vulnerable_Package": "ncurses-bin-6.0+20160213-1ubuntu1"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-13733", 
+                        "Severity": "Negligible", 
+                        "CVE_ID": "CVE-2017-13733", 
+                        "Vulnerable_Package": "ncurses-bin-6.0+20160213-1ubuntu1"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-13734", 
+                        "Severity": "Negligible", 
+                        "CVE_ID": "CVE-2017-13734", 
+                        "Vulnerable_Package": "ncurses-bin-6.0+20160213-1ubuntu1"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-1585", 
+                        "Severity": "Medium", 
+                        "CVE_ID": "CVE-2016-1585", 
+                        "Vulnerable_Package": "libapparmor1-2.10.95-0ubuntu2.7"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-1000082", 
+                        "Severity": "Low", 
+                        "CVE_ID": "CVE-2017-1000082", 
+                        "Vulnerable_Package": "systemd-sysv-229-4ubuntu21"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-12132", 
+                        "Severity": "Medium", 
+                        "CVE_ID": "CVE-2017-12132", 
+                        "Vulnerable_Package": "multiarch-support-2.23-0ubuntu10"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-12133", 
+                        "Severity": "Low", 
+                        "CVE_ID": "CVE-2017-12133", 
+                        "Vulnerable_Package": "multiarch-support-2.23-0ubuntu10"
+                    }, 
+                    {
+                        "Fix_Available": "None", 
+                        "URL": "http://people.ubuntu.com/~ubuntu-security/cve/CVE-2015-8985", 
+                        "Severity": "Low", 
+                        "CVE_ID": "CVE-2015-8985", 
+                        "Vulnerable_Package": "multiarch-support-2.23-0ubuntu10"
+                    }
+                ], 
+                "added": []
+            }
+        }
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "created_at": 1541630202,
+    "userId": "admin",
+    "tries": 0,
+    "record_state_val": null,
+    "last_updated": 1541630202,
+    "dataId": "628bc5d8-430b-47f4-9542-a83e644fb977",
+    "queueId": "analysis_update",
+    "max_tries": 1541630232,
+    "data": {
+        "notification_user": "admin",
+        "notification_user_email": "admin@system",
+        "notification_type": "analysis_update",
+        "notification_payload": {
+            "curr_eval": {
+                "analysis_status": "analyzed",
+                "annotations": {
+
+                },
+                "imageDigest": "sha256:5e590ba9448e37eec258ea6d3bda8c5a315b40f33b5f410d724bab3e0747fccb"
+            },
+            "last_eval": {
+                "analysis_status": "analyzing",
+                "annotations": {
+
+                },
+                "imageDigest": "sha256:5e590ba9448e37eec258ea6d3bda8c5a315b40f33b5f410d724bab3e0747fccb"
+            },
+            "notificationId": "628bc5d8-430b-47f4-9542-a83e644fb977",
+            "subscription_key": "docker.io/dnurmi/testrepo:latest",
+            "userId": "admin"
+        }
+    },
+    "record_state_key": "active"
+}

@@ -1,0 +1,27 @@
+{
+    "created_at": 1541630666,
+    "userId": "admin",
+    "tries": 0,
+    "record_state_val": null,
+    "last_updated": 1541630665,
+    "dataId": "da27d38c-172e-4641-bcb4-4d3c0ac1c8db",
+    "queueId": "tag_update",
+    "max_tries": 1541630695,
+    "data": {
+        "notification_user": "admin",
+        "notification_user_email": "admin@system",
+        "notification_type": "tag_update",
+        "notification_payload": {
+            "curr_eval": [
+                "sha256:870b19d67fab8b927fd97d526da13ef6ea28e8b057cd5a652a92c7e166a202b2"
+            ],
+            "last_eval": [
+                "sha256:5e590ba9448e37eec258ea6d3bda8c5a315b40f33b5f410d724bab3e0747fccb"
+            ],
+            "notificationId": "da27d38c-172e-4641-bcb4-4d3c0ac1c8db",
+            "subscription_key": "docker.io/dnurmi/testrepo:latest",
+            "userId": "admin"
+        }
+    },
+    "record_state_key": "active"
+}
