@@ -110,14 +110,14 @@ func (p *Parser) Parse(req *http.Request) (*cloudevents.Event, error) {
 		action = event.GetAction()
 	case *github.PublicEvent:
 		source = event.Repo.GetURL()
-	case *github.PullRequestReviewCommentEvent:
-		source = event.Comment.GetURL()
+	case *github.PullRequestEvent:
+		source = event.PullRequest.GetURL()
 		action = event.GetAction()
 	case *github.PullRequestReviewEvent:
 		source = event.PullRequest.GetURL()
 		action = event.GetAction()
-	case *github.PullRequestEvent:
-		source = event.PullRequest.GetURL()
+	case *github.PullRequestReviewCommentEvent:
+		source = event.Comment.GetURL()
 		action = event.GetAction()
 	case *github.PushEvent:
 		// API URL is not set in "repository.url", need to generate URL from statuses URL.
@@ -130,11 +130,11 @@ func (p *Parser) Parse(req *http.Request) (*cloudevents.Event, error) {
 			return nil, err
 		}
 		source = base.ResolveReference(ref).String()
-	case *github.RepositoryEvent:
-		source = event.Repo.GetURL()
-		action = event.GetAction()
 	case *github.ReleaseEvent:
 		source = event.Release.GetURL()
+		action = event.GetAction()
+	case *github.RepositoryEvent:
+		source = event.Repo.GetURL()
 		action = event.GetAction()
 	case *github.StatusEvent:
 		source = event.Commit.GetURL()
