@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	eventType   = "io.prometheus.alertmanager.notify"
+	eventType   = "io.prometheus.alertmanager.alert"
 	contentType = "application/json"
 )
 
