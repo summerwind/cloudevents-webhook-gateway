@@ -23,6 +23,7 @@ import (
 	"github.com/summerwind/cloudevents-webhook-gateway/webhook"
 	"github.com/summerwind/cloudevents-webhook-gateway/webhook/alertmanager"
 	"github.com/summerwind/cloudevents-webhook-gateway/webhook/anchoreengine"
+	"github.com/summerwind/cloudevents-webhook-gateway/webhook/clair"
 	"github.com/summerwind/cloudevents-webhook-gateway/webhook/dockerhub"
 	"github.com/summerwind/cloudevents-webhook-gateway/webhook/github"
 )
@@ -196,6 +197,21 @@ func run(cmd *cobra.Command, args []string) error {
 		}
 
 		mux.Handle(c.AnchoreEngine.Path, handler)
+	}
+
+	if c.Clair.Backend != "" {
+		backend, err := url.Parse(c.Clair.Backend)
+		if err != nil {
+			return err
+		}
+		parser := clair.NewParser()
+
+		handler, err := newProxyHandler(backend, parser)
+		if err != nil {
+			return err
+		}
+
+		mux.Handle(c.Clair.Path, handler)
 	}
 
 	server := &http.Server{

@@ -7,6 +7,7 @@ type Config struct {
 	DockerHub     *DockerHubConfig     `json:"dockerhub"`
 	Alertmanager  *AlertmanagerConfig  `json:"alertmanager"`
 	AnchoreEngine *AnchoreEngineConfig `json:"anchore-engine"`
+	Clair         *ClairConfig         `json:"clair"`
 }
 
 type TLSConfig struct {
@@ -35,6 +36,11 @@ type AnchoreEngineConfig struct {
 	Backend string `json:"backend"`
 }
 
+type ClairConfig struct {
+	Path    string `json:"path"`
+	Backend string `json:"backend"`
+}
+
 func New() *Config {
 	return &Config{
 		Listen: "0.0.0.0:24381",
@@ -50,6 +56,9 @@ func New() *Config {
 		},
 		AnchoreEngine: &AnchoreEngineConfig{
 			Path: "/anchore-engine",
+		},
+		Clair: &ClairConfig{
+			Path: "/clair",
 		},
 	}
 }

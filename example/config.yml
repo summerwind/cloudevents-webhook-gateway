@@ -42,3 +42,11 @@ anchore-engine:
   # Backend URL to forward CloudEvents. If this setting is empty,
   # the Anchore Engine endpoint will be disabled.
   backend: http://127.0.0.1:3000
+
+# Configuration for Clair webhook.
+clair:
+  # The path of the webhook endpoint.
+  path: /clair
+  # Backend URL to forward CloudEvents. If this setting is empty,
+  # the Clair endpoint will be disabled.
+  backend: http://127.0.0.1:3000
