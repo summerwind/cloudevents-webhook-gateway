@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"net/http"
 	"net/url"
-	"time"
 
 	cloudevents "github.com/cloudevents/sdk-go/v02"
 )
@@ -35,8 +34,6 @@ func (p *Parser) Parse(req *http.Request) (*cloudevents.Event, error) {
 		return nil, err
 	}
 
-	t := time.Now()
-
 	source := fmt.Sprintf("/notifications/%s", w.Notification.Name)
 	s, err := url.Parse(source)
 	if err != nil {
@@ -44,7 +41,6 @@ func (p *Parser) Parse(req *http.Request) (*cloudevents.Event, error) {
 	}
 
 	ce := &cloudevents.Event{
-		Time:        &t,
 		Type:        "com.coreos.clair.notify",
 		Source:      *s,
 		ContentType: "application/json",

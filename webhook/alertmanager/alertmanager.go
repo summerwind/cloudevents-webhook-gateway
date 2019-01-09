@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"net/http"
 	"net/url"
-	"time"
 
 	cloudevents "github.com/cloudevents/sdk-go/v02"
 	"github.com/prometheus/alertmanager/notify"
@@ -32,15 +31,12 @@ func (p *Parser) Parse(req *http.Request) (*cloudevents.Event, error) {
 		return nil, err
 	}
 
-	t := time.Now()
-
 	s, err := url.Parse(msg.ExternalURL)
 	if err != nil {
 		return nil, err
 	}
 
 	ce := &cloudevents.Event{
-		Time:        &t,
 		Type:        eventType,
 		Source:      *s,
 		ContentType: contentType,

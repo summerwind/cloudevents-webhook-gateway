@@ -88,6 +88,11 @@ func newProxyHandler(backend *url.URL, parser webhook.Parser) (*httputil.Reverse
 			ce.ID = id.String()
 		}
 
+		if ce.Time == nil {
+			t := time.Now()
+			ce.Time = &t
+		}
+
 		req.Body = body
 
 		req.Host = backend.Host

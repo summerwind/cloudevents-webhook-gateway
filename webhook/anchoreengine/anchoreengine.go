@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"net/http"
 	"net/url"
-	"time"
 
 	cloudevents "github.com/cloudevents/sdk-go/v02"
 )
@@ -41,8 +40,6 @@ func (p *Parser) Parse(req *http.Request) (*cloudevents.Event, error) {
 		return nil, err
 	}
 
-	t := time.Now()
-
 	source := fmt.Sprintf("/v1/subscriptions?subscription_key=%s", w.Data.NotificationPayload.SubscriptionKey)
 	s, err := url.Parse(source)
 	if err != nil {
@@ -50,7 +47,6 @@ func (p *Parser) Parse(req *http.Request) (*cloudevents.Event, error) {
 	}
 
 	ce := &cloudevents.Event{
-		Time:        &t,
 		ID:          w.Data.NotificationPayload.NotificationID,
 		Type:        fmt.Sprintf("com.anchore.anchore-engine.%s", w.Data.NotificationType),
 		Source:      *s,

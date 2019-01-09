@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"net/http"
 	"net/url"
-	"time"
 
 	cloudevents "github.com/cloudevents/sdk-go/v02"
 	"github.com/google/go-github/v21/github"
@@ -130,11 +129,8 @@ func (p *Parser) Parse(req *http.Request) (*cloudevents.Event, error) {
 		return nil, err
 	}
 
-	t := time.Now()
-
 	ce := &cloudevents.Event{
 		ID:          github.DeliveryID(req),
-		Time:        &t,
 		Type:        fmt.Sprintf("com.github.%s", webHookType),
 		Source:      *s,
 		ContentType: "application/json",
