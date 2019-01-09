@@ -1,13 +1,13 @@
 package config
 
 type Config struct {
-	Listen        string               `json:"listen"`
-	TLS           *TLSConfig           `json:"tls"`
-	GitHub        *GitHubConfig        `json:"github"`
-	DockerHub     *DockerHubConfig     `json:"dockerhub"`
-	Alertmanager  *AlertmanagerConfig  `json:"alertmanager"`
-	AnchoreEngine *AnchoreEngineConfig `json:"anchore-engine"`
-	Clair         *ClairConfig         `json:"clair"`
+	Listen        string        `json:"listen"`
+	TLS           *TLSConfig    `json:"tls"`
+	GitHub        *GitHubConfig `json:"github"`
+	DockerHub     *ProxyConfig  `json:"dockerhub"`
+	Alertmanager  *ProxyConfig  `json:"alertmanager"`
+	AnchoreEngine *ProxyConfig  `json:"anchore-engine"`
+	Clair         *ProxyConfig  `json:"clair"`
 }
 
 type TLSConfig struct {
@@ -21,22 +21,7 @@ type GitHubConfig struct {
 	Secret  string `json:"secret"`
 }
 
-type DockerHubConfig struct {
-	Path    string `json:"path"`
-	Backend string `json:"backend"`
-}
-
-type AlertmanagerConfig struct {
-	Path    string `json:"path"`
-	Backend string `json:"backend"`
-}
-
-type AnchoreEngineConfig struct {
-	Path    string `json:"path"`
-	Backend string `json:"backend"`
-}
-
-type ClairConfig struct {
+type ProxyConfig struct {
 	Path    string `json:"path"`
 	Backend string `json:"backend"`
 }
@@ -48,16 +33,16 @@ func New() *Config {
 		GitHub: &GitHubConfig{
 			Path: "/github",
 		},
-		DockerHub: &DockerHubConfig{
+		DockerHub: &ProxyConfig{
 			Path: "/dockerhub",
 		},
-		Alertmanager: &AlertmanagerConfig{
+		Alertmanager: &ProxyConfig{
 			Path: "/alertmanager",
 		},
-		AnchoreEngine: &AnchoreEngineConfig{
+		AnchoreEngine: &ProxyConfig{
 			Path: "/anchore-engine",
 		},
-		Clair: &ClairConfig{
+		Clair: &ProxyConfig{
 			Path: "/clair",
 		},
 	}
