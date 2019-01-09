@@ -30,3 +30,4 @@ cloudevents-webhook-gateway currently supports the following webhooks.
 - Docker Hub
 - Alertmanager
 - Anchore Engine
+- Clair
