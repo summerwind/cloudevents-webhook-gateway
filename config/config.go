@@ -8,6 +8,7 @@ type Config struct {
 	Alertmanager  *ProxyConfig  `json:"alertmanager"`
 	AnchoreEngine *ProxyConfig  `json:"anchore-engine"`
 	Clair         *ProxyConfig  `json:"clair"`
+	Slack         *ProxyConfig  `json:"slack"`
 }
 
 type TLSConfig struct {
@@ -44,6 +45,9 @@ func New() *Config {
 		},
 		Clair: &ProxyConfig{
 			Path: "/clair",
+		},
+		Slack: &ProxyConfig{
+			Path: "/slack",
 		},
 	}
 }

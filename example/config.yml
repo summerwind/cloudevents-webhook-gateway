@@ -13,7 +13,7 @@ github:
   # The path of the webhook endpoint.
   path: /github
   # Backend URL to forward CloudEvents. If this setting is empty,
-  # the Github endpoint will be disabled.
+  # this endpoint will be disabled.
   backend: http://127.0.0.1:3000
   # Secret token for GitHub secret.
   # See: https://developer.github.com/webhooks/securing/
@@ -24,7 +24,7 @@ dockerhub:
   # The path of the webhook endpoint.
   path: /dockerhub
   # Backend URL to forward CloudEvents. If this setting is empty,
-  # the Docker Hub endpoint will be disabled.
+  # this endpoint will be disabled.
   backend: http://127.0.0.1:3000
 
 # Configuration for Alertmanager webhook.
@@ -32,7 +32,7 @@ alertmanager:
   # The path of the webhook endpoint.
   path: /alertmanager
   # Backend URL to forward CloudEvents. If this setting is empty,
-  # the Alertmanager endpoint will be disabled.
+  # this endpoint will be disabled.
   backend: http://127.0.0.1:3000
 
 # Configuration for Anchore Engine webhook.
@@ -40,7 +40,7 @@ anchore-engine:
   # The path of the webhook endpoint.
   path: /anchore-engine
   # Backend URL to forward CloudEvents. If this setting is empty,
-  # the Anchore Engine endpoint will be disabled.
+  # this endpoint will be disabled.
   backend: http://127.0.0.1:3000
 
 # Configuration for Clair webhook.
@@ -48,5 +48,13 @@ clair:
   # The path of the webhook endpoint.
   path: /clair
   # Backend URL to forward CloudEvents. If this setting is empty,
-  # the Clair endpoint will be disabled.
+  # this endpoint will be disabled.
+  backend: http://127.0.0.1:3000
+
+# Configuration for Slack (Slash Commands) webhook.
+slack:
+  # The path of the webhook endpoint.
+  path: /slack
+  # Backend URL to forward CloudEvents. If this setting is empty,
+  # this endpoint will be disabled.
   backend: http://127.0.0.1:3000

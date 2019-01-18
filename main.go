@@ -26,6 +26,7 @@ import (
 	"github.com/summerwind/cloudevents-webhook-gateway/webhook/clair"
 	"github.com/summerwind/cloudevents-webhook-gateway/webhook/dockerhub"
 	"github.com/summerwind/cloudevents-webhook-gateway/webhook/github"
+	"github.com/summerwind/cloudevents-webhook-gateway/webhook/slack"
 )
 
 var (
@@ -217,6 +218,21 @@ func run(cmd *cobra.Command, args []string) error {
 		}
 
 		mux.Handle(c.Clair.Path, handler)
+	}
+
+	if c.Slack.Backend != "" {
+		backend, err := url.Parse(c.Slack.Backend)
+		if err != nil {
+			return err
+		}
+		parser := slack.NewParser()
+
+		handler, err := newProxyHandler(backend, parser)
+		if err != nil {
+			return err
+		}
+
+		mux.Handle(c.Slack.Path, handler)
 	}
 
 	server := &http.Server{
