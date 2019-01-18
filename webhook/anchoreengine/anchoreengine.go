@@ -2,6 +2,7 @@ package anchoreengine
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"net/http"
 	"net/url"
@@ -31,6 +32,10 @@ func NewParser() *Parser {
 
 func (p *Parser) Parse(req *http.Request) (*cloudevents.Event, error) {
 	var w Webhook
+
+	if req.Body == nil {
+		return nil, errors.New("empty payload")
+	}
 
 	decoder := json.NewDecoder(req.Body)
 	defer req.Body.Close()
