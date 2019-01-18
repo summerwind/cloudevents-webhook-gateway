@@ -52,7 +52,7 @@ func TestParse(t *testing.T) {
 	if ce.Type != "com.slack.slash_command" {
 		t.Errorf("invalid type: %v", ce.Type)
 	}
-	if ce.Source.String() != "https://example.slack.com/messages/C2147483705" {
+	if ce.Source.String() != "/weather" {
 		t.Errorf("invalid source: %v", ce.Source)
 	}
 }
