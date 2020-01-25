@@ -1,11 +1,12 @@
 module github.com/summerwind/cloudevents-webhook-gateway
 
+go 1.13
+
 require (
 	github.com/armon/go-metrics v0.0.0-20180917152333-f0300d1749da
 	github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973
 	github.com/cenkalti/backoff v2.0.0+incompatible
 	github.com/cespare/xxhash v1.1.0
-	github.com/cloudevents/sdk-go v0.0.0-20181211100118-3a3d34a7231e
 	github.com/go-kit/kit v0.8.0
 	github.com/go-logfmt/logfmt v0.4.0
 	github.com/gogo/protobuf v1.1.1
