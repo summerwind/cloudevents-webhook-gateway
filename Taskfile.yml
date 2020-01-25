@@ -19,17 +19,23 @@ tasks:
     deps: [test]
     cmds:
       - go tool cover -html=cover.out
-  container:
+  build-container:
     deps: [test]
     cmds:
       - GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build {{.BUILD_FLAGS}} .
       - docker build -t summerwind/{{.NAME}}:latest -t summerwind/{{.NAME}}:{{.VERSION}} .
+  push-container:
+    cmds:
+      - docker push summerwind/{{.NAME}}:latest
+  push-release-container:
+    cmds:
+      - docker push summerwind/{{.NAME}}:{{.VERSION}}
   package:
     cmds:
       - GOOS={{.OS}} GOARCH={{.ARCH}} CGO_ENABLED=0 go build {{.BUILD_FLAGS}} .
       - tar -czf dist/{{.NAME}}_{{.OS}}_{{.ARCH}}.tar.gz {{.NAME}}
       - rm -rf {{.NAME}}
-  dist:
+  release:
     deps: [test]
     cmds:
       - mkdir -p dist
@@ -41,9 +47,10 @@ tasks:
         vars: {OS: "linux", ARCH: "arm"}
       - task: package
         vars: {OS: "darwin", ARCH: "amd64"}
-  module:
+  github-release:
+    deps: [release]
     cmds:
-      - go mod download
+    - ghr v{{.VERSION}} release/
   clean:
     cmds:
       - rm -rf {{.NAME}} dist cover.out
