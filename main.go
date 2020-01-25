@@ -101,17 +101,22 @@ func newProxyHandler(backend *url.URL, parser webhook.Parser) (*httputil.Reverse
 		req.URL.Host = backend.Host
 		req.URL.Path = backend.Path
 
-		req.Header.Set("CE-SpecVersion", "0.2")
-		req.Header.Set("CE-ID", ce.ID)
-		req.Header.Set("CE-Time", ce.Time.Format(time.RFC3339))
-		req.Header.Set("CE-Type", ce.Type)
-		req.Header.Set("CE-Source", ce.Source.String())
+		req.Header.Set("ce-specversion", "1.0")
+		req.Header.Set("ce-type", ce.Type)
+		req.Header.Set("ce-source", ce.Source.String())
+		req.Header.Set("ce-id", ce.ID)
 
-		if ce.SchemaURL.String() != "" {
-			req.Header.Set("CE-SchemaURL", ce.SchemaURL.String())
+		if ce.Subject != "" {
+			req.Header.Set("ce-subject", ce.Subject)
 		}
-		if ce.ContentType != "" {
-			req.Header.Set("Content-Type", ce.ContentType)
+		if ce.Time != nil {
+			req.Header.Set("ce-time", ce.Time.Format(time.RFC3339))
+		}
+		if ce.DataSchema.String() != "" {
+			req.Header.Set("ce-dataschema", ce.DataSchema.String())
+		}
+		if ce.DataContentType != "" {
+			req.Header.Set("Content-Type", ce.DataContentType)
 		}
 
 		log.Printf("remote_addr:%s event_id:%s event_type:%s source:%s", req.RemoteAddr, ce.ID, ce.Type, ce.Source.String())
@@ -266,7 +271,7 @@ func run(cmd *cobra.Command, args []string) error {
 func main() {
 	var cmd = &cobra.Command{
 		Use:   "cloudevents-webhook-gateway",
-		Short: "Wehbook gateway for CloudEvents",
+		Short: "A gateway that converts webhook requests to CloudEvents",
 		RunE:  run,
 
 		SilenceErrors: true,

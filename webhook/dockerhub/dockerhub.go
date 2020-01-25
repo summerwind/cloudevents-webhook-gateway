@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"net/url"
 
-	cloudevents "github.com/cloudevents/sdk-go/v02"
+	"github.com/summerwind/cloudevents-webhook-gateway/cloudevents"
 )
 
 type Webhook struct {
@@ -44,9 +44,9 @@ func (p *Parser) Parse(req *http.Request) (*cloudevents.Event, error) {
 	}
 
 	ce := &cloudevents.Event{
-		Type:        "com.docker.hub.push",
-		Source:      *s,
-		ContentType: "application/json",
+		Type:            "com.docker.hub.push",
+		Source:          *s,
+		DataContentType: "application/json",
 	}
 
 	return ce, nil

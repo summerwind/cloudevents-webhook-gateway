@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"net/url"
 
-	cloudevents "github.com/cloudevents/sdk-go/v02"
 	"github.com/prometheus/alertmanager/notify"
+	"github.com/summerwind/cloudevents-webhook-gateway/cloudevents"
 )
 
 const (
@@ -42,9 +42,9 @@ func (p *Parser) Parse(req *http.Request) (*cloudevents.Event, error) {
 	}
 
 	ce := &cloudevents.Event{
-		Type:        eventType,
-		Source:      *s,
-		ContentType: contentType,
+		Type:            eventType,
+		Source:          *s,
+		DataContentType: contentType,
 	}
 
 	return ce, nil

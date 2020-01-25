@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"net/url"
 
-	cloudevents "github.com/cloudevents/sdk-go/v02"
+	"github.com/summerwind/cloudevents-webhook-gateway/cloudevents"
 )
 
 const (
@@ -43,10 +43,10 @@ func (p *Parser) Parse(req *http.Request) (*cloudevents.Event, error) {
 	}
 
 	ce := &cloudevents.Event{
-		ID:          tid,
-		Type:        eventType,
-		Source:      *s,
-		ContentType: contentType,
+		ID:              tid,
+		Type:            eventType,
+		Source:          *s,
+		DataContentType: contentType,
 	}
 
 	return ce, nil

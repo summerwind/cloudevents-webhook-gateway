@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"net/url"
 
-	cloudevents "github.com/cloudevents/sdk-go/v02"
 	"github.com/google/go-github/v21/github"
+	"github.com/summerwind/cloudevents-webhook-gateway/cloudevents"
 )
 
 type Parser struct {
@@ -130,10 +130,10 @@ func (p *Parser) Parse(req *http.Request) (*cloudevents.Event, error) {
 	}
 
 	ce := &cloudevents.Event{
-		ID:          github.DeliveryID(req),
-		Type:        fmt.Sprintf("com.github.%s", webHookType),
-		Source:      *s,
-		ContentType: "application/json",
+		ID:              github.DeliveryID(req),
+		Type:            fmt.Sprintf("com.github.%s", webHookType),
+		Source:          *s,
+		DataContentType: "application/json",
 	}
 
 	return ce, nil

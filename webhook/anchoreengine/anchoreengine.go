@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"net/url"
 
-	cloudevents "github.com/cloudevents/sdk-go/v02"
+	"github.com/summerwind/cloudevents-webhook-gateway/cloudevents"
 )
 
 type Webhook struct {
@@ -52,10 +52,10 @@ func (p *Parser) Parse(req *http.Request) (*cloudevents.Event, error) {
 	}
 
 	ce := &cloudevents.Event{
-		ID:          w.Data.NotificationPayload.NotificationID,
-		Type:        fmt.Sprintf("com.anchore.anchore-engine.%s", w.Data.NotificationType),
-		Source:      *s,
-		ContentType: "application/json",
+		ID:              w.Data.NotificationPayload.NotificationID,
+		Type:            fmt.Sprintf("com.anchore.anchore-engine.%s", w.Data.NotificationType),
+		Source:          *s,
+		DataContentType: "application/json",
 	}
 
 	return ce, nil
