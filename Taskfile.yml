@@ -33,12 +33,12 @@ tasks:
   package:
     cmds:
       - GOOS={{.OS}} GOARCH={{.ARCH}} CGO_ENABLED=0 go build {{.BUILD_FLAGS}} .
-      - tar -czf dist/{{.NAME}}_{{.OS}}_{{.ARCH}}.tar.gz {{.NAME}}
+      - tar -czf release/{{.NAME}}_{{.OS}}_{{.ARCH}}.tar.gz {{.NAME}}
       - rm -rf {{.NAME}}
   release:
     deps: [test]
     cmds:
-      - mkdir -p dist
+      - mkdir -p release
       - task: package
         vars: {OS: "linux", ARCH: "amd64"}
       - task: package
