@@ -12,8 +12,8 @@ jobs:
         curl -sL https://taskfile.dev/install.sh | sh
         sudo mv ./bin/task /usr/local/bin
     - name: Build container
-      run: make build-container
+      run: task build-container
     - name: Docker Login
       run: docker login -u summerwind -p ${{ secrets.DOCKER_ACCESS_TOKEN }}
     - name: Push container
-      run: make push-container
+      run: task push-container
