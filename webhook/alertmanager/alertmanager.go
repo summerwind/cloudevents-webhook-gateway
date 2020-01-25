@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/prometheus/alertmanager/notify"
+	"github.com/prometheus/alertmanager/notify/webhook"
 	"github.com/summerwind/cloudevents-webhook-gateway/cloudevents"
 )
 
@@ -22,7 +22,7 @@ func NewParser() *Parser {
 }
 
 func (p *Parser) Parse(req *http.Request) (*cloudevents.Event, error) {
-	var msg notify.WebhookMessage
+	var msg webhook.Message
 
 	if req.Body == nil {
 		return nil, errors.New("empty payload")

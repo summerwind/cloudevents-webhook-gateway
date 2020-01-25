@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/google/go-github/v21/github"
+	"github.com/google/go-github/v29/github"
 	"github.com/summerwind/cloudevents-webhook-gateway/cloudevents"
 )
 

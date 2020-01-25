@@ -3,41 +3,9 @@ module github.com/summerwind/cloudevents-webhook-gateway
 go 1.13
 
 require (
-	github.com/armon/go-metrics v0.0.0-20180917152333-f0300d1749da
-	github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973
-	github.com/cenkalti/backoff v2.0.0+incompatible
-	github.com/cespare/xxhash v1.1.0
-	github.com/go-kit/kit v0.8.0
-	github.com/go-logfmt/logfmt v0.4.0
-	github.com/gogo/protobuf v1.1.1
-	github.com/golang/protobuf v1.2.0
-	github.com/google/go-github/v21 v21.0.0
-	github.com/google/go-querystring v1.0.0
-	github.com/hashicorp/errwrap v1.0.0
-	github.com/hashicorp/go-immutable-radix v1.0.0
-	github.com/hashicorp/go-msgpack v0.0.0-20150518234257-fa3f63826f7c
-	github.com/hashicorp/go-multierror v1.0.0
-	github.com/hashicorp/go-sockaddr v0.0.0-20180320115054-6d291a969b86
-	github.com/hashicorp/golang-lru v0.5.0
-	github.com/hashicorp/memberlist v0.1.0
-	github.com/inconshreveable/mousetrap v1.0.0
-	github.com/kr/logfmt v0.0.0-20140226030751-b84e30acd515
-	github.com/matttproud/golang_protobuf_extensions v1.0.1
-	github.com/miekg/dns v1.0.15
-	github.com/mwitkow/go-conntrack v0.0.0-20161129095857-cc309e4a2223
-	github.com/oklog/ulid v1.3.1
-	github.com/pkg/errors v0.8.0
-	github.com/prometheus/alertmanager v0.15.3
-	github.com/prometheus/client_golang v0.9.1
-	github.com/prometheus/client_model v0.0.0-20180712105110-5c3871d89910
-	github.com/prometheus/common v0.0.0-20181120120127-aeab699e26f4
-	github.com/prometheus/procfs v0.0.0-20181005140218-185b4288413d
+	github.com/google/go-github/v29 v29.0.2
+	github.com/prometheus/alertmanager v0.20.0
 	github.com/satori/go.uuid v1.2.0
-	github.com/sean-/seed v0.0.0-20170313163322-e2103e2c3529
-	github.com/spf13/cobra v0.0.3
-	github.com/spf13/pflag v1.0.3
-	golang.org/x/crypto v0.0.0-20181112202954-3d3f9f413869
-	golang.org/x/net v0.0.0-20181114220301-adae6a3d119a
-	golang.org/x/sys v0.0.0-20181122145206-62eef0e2fa9b
-	gopkg.in/yaml.v2 v2.2.1
+	github.com/spf13/cobra v0.0.5
+	gopkg.in/yaml.v2 v2.2.8
 )
