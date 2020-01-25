@@ -1,19 +1,25 @@
-on: [push]
+on:
+  push:
+    branches: [master]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Build container image
+    name: Build
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+
     - name: Install tools
       run: |
         curl -sL https://taskfile.dev/install.sh | sh
         sudo mv ./bin/task /usr/local/bin
+
     - name: Build container
       run: task build-container
+
     - name: Docker Login
       run: docker login -u summerwind -p ${{ secrets.DOCKER_ACCESS_TOKEN }}
+
     - name: Push container
       run: task push-container
